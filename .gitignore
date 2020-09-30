@@ -1,3 +1,13 @@
+
+# フォルダ構成
+backupfiles/*
+myplugin/*
+plugged/*
+sessions/*
+swpfiles/*
+undofiles/*
+!.gitkeep
+
 # Created by https://www.toptal.com/developers/gitignore/api/vim
 # Edit at https://www.toptal.com/developers/gitignore?templates=vim
 
