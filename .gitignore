@@ -3,6 +3,7 @@
 backupfiles/*
 myplugin/*
 plugged/*
+secret/*
 sessions/*
 swpfiles/*
 undofiles/*
