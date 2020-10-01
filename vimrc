@@ -268,6 +268,8 @@ nmap ]h <Plug>(GitGutterNextHunk)
 
 let g:gitgutter_enabled = 1
 let g:gitgutter_diff_args = "--ignore-cr-at-eol"
+let g:gitgutter_sign_removed_first_line = '^^'
+let g:gitgutter_sign_removed_above_and_below = '_^'
 
 autocmd BufWritePost,WinEnter * GitGutter
 
