@@ -11,31 +11,36 @@ set printheader=%<%t%h%m%=%N\ \
 highlight clear CursorLine
 highlight CursorLine gui=underline
 
-command! ViewVideoModeToggle call <SID>ViewVideoModeToggle()
-let s:view_mode = v:true
+command! ChangeViewMode call <SID>ChangeViewMode(s:is_transparent, !s:view_mode)
+command! ChangeTransparent call <SID>ChangeViewMode(!s:is_transparent, s:view_mode)
 
-" http://c4se.hatenablog.com/entry/2013/05/04/093446
-func! s:ViewVideoModeToggle()
-	if s:view_mode
-		augroup MyGVimrc
-			au!
-			autocmd GUIEnter * set transparency=230
-			autocmd FocusGained * set transparency=230
-			autocmd FocusLost * set transparency=200
-		augroup END
-		set transparency=230
-		let s:view_mode = v:false
+let s:view_mode = v:true
+let s:is_transparent = v:true
+
+func! s:ChangeViewMode(is_transparent, view_mode)
+	if a:is_transparent
+		if a:view_mode
+			call s:SetTransparency(230, 200)
+		else
+			call s:SetTransparency(190, 190)
+		endif
 	else
-		augroup MyGVimrc
-			au!
-			autocmd GUIEnter * set transparency=190
-			autocmd FocusGained * set transparency=190
-			autocmd FocusLost * set transparency=190
-		augroup END
-		set transparency=190
-		let s:view_mode = v:true
+		call s:SetTransparency(255, 255)
 	endif
+	let s:is_transparent = a:is_transparent
+	let s:view_mode = a:view_mode
+endf
+
+func! s:SetTransparency(onFocus, outFocus)
+	" http://c4se.hatenablog.com/entry/2013/05/04/093446
+	augroup MyGVimrc
+		au!
+		exec "autocmd GUIEnter    * set transparency=" . string(a:onFocus)
+		exec "autocmd FocusGained * set transparency=" . string(a:onFocus)
+		exec "autocmd FocusLost   * set transparency=" . string(a:outFocus)
+	augroup END
+	exec "set transparency=" . string(a:onFocus)
 endf
 
 " 初回
-ViewVideoModeToggle
+call s:ChangeViewMode(v:true, v:true)
