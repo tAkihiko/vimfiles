@@ -11,18 +11,26 @@ set printheader=%<%t%h%m%=%N\ \
 highlight clear CursorLine
 highlight CursorLine gui=underline
 
-command! ChangeViewMode call <SID>ChangeViewMode(s:is_transparent, !s:view_mode)
-command! ChangeTransparent call <SID>ChangeViewMode(!s:is_transparent, s:view_mode)
+command! ChangeViewMode    call <SID>ChangeViewMode()
+command! ChangeTransparent call <SID>ChangeTransparent()
 
 let s:view_mode = v:true
 let s:is_transparent = v:true
 
-func! s:ChangeViewMode(is_transparent, view_mode)
+func! s:ChangeViewMode()
+	call <SID>SetGuiParam(s:is_transparent, !s:view_mode)
+endf
+
+func! s:ChangeTransparent()
+	call <SID>SetGuiParam(!s:is_transparent, s:view_mode)
+endf
+
+func! s:SetGuiParam(is_transparent, view_mode)
 	if a:is_transparent
 		if a:view_mode
 			call s:SetTransparency(230, 200)
 		else
-			call s:SetTransparency(190, 190)
+			call s:SetTransparency(190, 150)
 		endif
 	else
 		call s:SetTransparency(255, 255)
@@ -43,4 +51,4 @@ func! s:SetTransparency(onFocus, outFocus)
 endf
 
 " 初回
-call s:ChangeViewMode(v:true, v:true)
+call s:SetGuiParam(v:true, v:true)
