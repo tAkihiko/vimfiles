@@ -367,7 +367,7 @@ function! LightlineMode()
 endfunction
 
 function! LightlineHightlight()
-	if exists('*tanikawa#show_highlight#ShowHlItem')
+	if !empty(globpath(&rtp, 'autoload/tanikawa/show_highlight.vim'))
 		return winwidth(0) > 100 ? tanikawa#show_highlight#ShowHlItem() : ''
 	else
 		return ''
