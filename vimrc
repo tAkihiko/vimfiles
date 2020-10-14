@@ -270,15 +270,17 @@ nmap <leader>a <Plug>(EasyAlign)
 
 " {{{ GitGutter
 
-nmap [h <Plug>(GitGutterPrevHunk)
-nmap ]h <Plug>(GitGutterNextHunk)
+if !empty(globpath(&rtp, 'autoload/gitgutter.vim'))
+	nmap [h <Plug>(GitGutterPrevHunk)
+	nmap ]h <Plug>(GitGutterNextHunk)
 
-let g:gitgutter_enabled = 1
-let g:gitgutter_diff_args = "--ignore-cr-at-eol"
-let g:gitgutter_sign_removed_first_line = '^^'
-let g:gitgutter_sign_removed_above_and_below = '_^'
+	let g:gitgutter_enabled = 1
+	let g:gitgutter_diff_args = "--ignore-cr-at-eol"
+	let g:gitgutter_sign_removed_first_line = '^^'
+	let g:gitgutter_sign_removed_above_and_below = '_^'
 
-autocmd BufWritePost,WinEnter * GitGutter
+	autocmd BufWritePost,WinEnter * GitGutter
+endif
 
 " }}}
 
@@ -365,7 +367,11 @@ function! LightlineMode()
 endfunction
 
 function! LightlineHightlight()
-	return winwidth(0) > 100 ? tanikawa#show_highlight#ShowHlItem() : ''
+	if exists('*tanikawa#show_highlight#ShowHlItem')
+		return winwidth(0) > 100 ? tanikawa#show_highlight#ShowHlItem() : ''
+	else
+		return ''
+	endif
 endfunction
 
 function! LightlineTagName()
