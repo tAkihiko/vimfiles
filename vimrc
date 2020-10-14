@@ -375,7 +375,7 @@ function! LightlineHightlight()
 endfunction
 
 function! LightlineTagName()
-	if exists('*tagbar#currenttag')
+	if !empty(globpath(&rtp, 'autoload/tagbar.vim'))
 		return tagbar#currenttag('%s', '')
 	else
 		return ''
