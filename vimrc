@@ -367,7 +367,7 @@ function! LightlineMode()
 endfunction
 
 function! LightlineHightlight()
-	if !empty(globpath(&rtp, 'autoload/tanikawa/show_highlight.vim'))
+	if exists('g:loaded_tanikawa') && g:loaded_tanikawa
 		return winwidth(0) > 100 ? tanikawa#show_highlight#ShowHlItem() : ''
 	else
 		return ''
@@ -375,7 +375,7 @@ function! LightlineHightlight()
 endfunction
 
 function! LightlineTagName()
-	if !empty(globpath(&rtp, 'autoload/tagbar.vim'))
+	if exists('g:loaded_tagbar') && g:loaded_tagbar
 		return tagbar#currenttag('%s', '')
 	else
 		return ''
