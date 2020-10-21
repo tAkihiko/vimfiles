@@ -53,6 +53,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'sheerun/vim-polyglot'
 
 Plug '~\vimfiles\myplugin\_tanikawa'
 Plug '~\vimfiles\myplugin\vim-vsopen'
