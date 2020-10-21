@@ -1,7 +1,9 @@
 scriptencoding utf-8
 
-let g:gruvbox_italic = 0
-colorscheme gruvbox
+if !empty(globpath(&rtp, 'colors/gruvbox.vim'))
+	let g:gruvbox_italic = 0
+	colorscheme gruvbox
+endif
 
 set background=dark
 set guifont=ゆたぽん（コーディング）Backsl:h12:cSHIFTJIS:qDRAFT
