@@ -3,6 +3,7 @@ scriptencoding utf-8
 if !empty(globpath(&rtp, 'colors/tokyonight.vim'))
 	let g:tokyonight_style = 'night' " available: night, storm
 	let g:tokyonight_enable_italic = 0
+	let g:tokyonight_disable_italic_comment = 1
 	colorscheme tokyonight
 elseif !empty(globpath(&rtp, 'colors/gruvbox.vim'))
 	let g:gruvbox_italic = 0
