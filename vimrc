@@ -14,6 +14,7 @@ set cursorline
 set shiftwidth=0 tabstop=4
 set nofixendofline
 set undofile
+set migemo
 
 " Visual Studio
 set errorformat+=%m%\\t%f%\\t%l%\\t
@@ -404,6 +405,20 @@ let g:ctrlp_custom_ignore = {
 			\ 'file': '\v\.(exe|so|dll)$',
 			\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 			\ }
+function! MigemoMatch(items, str, limit, mmode, ispath, crfile, regex)
+	if a:str =~ '^\s*$'
+		return copy(a:items)
+	endif
+	let migemo_ptn = migemo(a:str)
+	let output = []
+	for item in a:items
+		if item =~? migemo_ptn
+			let output += [ item ]
+		endif
+	endfor
+	return copy(output)
+endfunction
+let g:ctrlp_match_func = {'match' : 'MigemoMatch' }
 
 " }}}
 
@@ -448,6 +463,12 @@ let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_popup = 0
 let g:asyncomplete_auto_completeopt = 0
 let g:asyncomplete_popup_delay = 200
+
+" }}}
+
+" {{{ Migemo
+
+let &migemodict = $VIMHOME . "/dict/".&enc."/migemo-dict"
 
 " }}}
 
