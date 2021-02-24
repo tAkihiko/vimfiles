@@ -19,6 +19,11 @@ set migemo
 " Visual Studio
 set errorformat+=%m%\\t%f%\\t%l%\\t
 
+augroup MySetting
+	au!
+	au FileType qf setlocal nocursorline
+augroup END
+
 call plug#begin('$VIMHOME/plugged')
 
 " {{{ Plugin
