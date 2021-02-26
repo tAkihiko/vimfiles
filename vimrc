@@ -62,6 +62,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'sheerun/vim-polyglot'
 Plug 'ghifarit53/tokyonight-vim'
+Plug 'mnishz/colorscheme-preview.vim'
 
 Plug '~\vimfiles\myplugin\_tanikawa'
 Plug '~\vimfiles\myplugin\vim-vsopen'
