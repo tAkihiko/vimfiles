@@ -39,6 +39,7 @@ Plug 'h1mesuke/vim-alignta'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mattn/ctrlp-matchfuzzy'
 Plug 'itchyny/vim-cursorword'
 "Plug 'mattn/vim-vsopen'
 Plug 'osyo-manga/vim-jplus'
@@ -414,16 +415,25 @@ function! MigemoMatch(items, str, limit, mmode, ispath, crfile, regex)
 	if a:str =~ '^\s*$'
 		return copy(a:items)
 	endif
-	let migemo_ptn = migemo(a:str)
+	let ptns = split(a:str)
+	let migemos = []
+	for ptn in ptns
+		let migemos += [migemo(ptn)]
+	endfor
+	let migemo_ptn = join(migemos, '\|')
 	let output = []
 	for item in a:items
-		if item =~? migemo_ptn
+		let ml = matchlist(item, migemo_ptn)
+		if 0 < len(ml)
+			call matchadd('CtrlPMatch', ml[0])
+			call matchadd('CtrlPLinePre', '^>')
 			let output += [ item ]
 		endif
 	endfor
 	return copy(output)
 endfunction
-let g:ctrlp_match_func = {'match' : 'MigemoMatch' }
+"let g:ctrlp_match_func = {'match' : 'MigemoMatch' }
+"let g:ctrlp_match_func = {'match': 'ctrlp_matchfuzzy#matcher'}
 
 " }}}
 
