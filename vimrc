@@ -89,8 +89,8 @@ nnoremap ciy ciw<C-R>0<ESC>
 inoremap <C-V> <C-R>0
 cnoremap <C-V> <C-R>0
 
-nnoremap <C-]> g<C-]>
-nnoremap <C-W><C-]> <C-W>g<C-]>
+nmap <C-]> g<C-]>
+nmap <C-W><C-]> <C-W>g<C-]>
 "nnoremap <C-W>} <C-W>g}
 nnoremap <silent> <C-W>} :call PreviewWord()<CR>
 
