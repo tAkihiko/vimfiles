@@ -16,10 +16,11 @@ if !empty(globpath(&rtp, 'colors/dracula.vim'))
 	let g:dracula_italic = 0
 	let s:has_color += ['dracula']
 endif
-if len(s:has_color) > 0
-	" 先頭のカラースキームを選ぶ
-	exe 'colorscheme' s:has_color[0]
-endif
+"if len(s:has_color) > 0
+"	" 先頭のカラースキームを選ぶ
+"	exe 'colorscheme' s:has_color[0]
+"endif
+colorscheme torte
 
 set background=dark
 set guifont=ゆたぽん（コーディング）Backsl:h12:cSHIFTJIS:qDRAFT
