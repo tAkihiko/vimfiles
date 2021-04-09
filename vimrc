@@ -63,6 +63,7 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'sheerun/vim-polyglot'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'mnishz/colorscheme-preview.vim'
+Plug 'thinca/vim-quickrun'
 
 Plug '~\vimfiles\myplugin\_tanikawa'
 Plug '~\vimfiles\myplugin\vim-vsopen'
@@ -476,8 +477,8 @@ let g:lsp_diagnostics_echo_cursor = 1
 
 " {{{ AsyncComplete
 
-let g:asyncomplete_auto_popup = 0
-let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_completeopt = 1
 let g:asyncomplete_popup_delay = 200
 
 " }}}
@@ -485,6 +486,98 @@ let g:asyncomplete_popup_delay = 200
 " {{{ Migemo
 
 let &migemodict = $VIMHOME . "/dict/".&enc."/migemo-dict"
+
+" }}}
+
+" {{{ vsnip
+
+" Expand
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+
+" Expand or jump
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+" }}}
+
+" {{{ quickrun
+
+let g:quickrun_config = {
+			\   '_' : {
+			\       'hook/output_encode/enable' : 1,
+			\       'hook/output_encode/encoding' : 'cp932',
+			\   },
+			\}
+
+" }}}
+
+" {{{ Python
+
+" LSP
+if (executable('pyls'))
+	" " pylsの起動定義
+	" augroup LspPython
+	" 	autocmd!
+	" 	autocmd User lsp_setup call lsp#register_server({
+	" 				\ 'name': 'pyls',
+	" 				\ 'cmd': { server_info -> ['pyls'] },
+	" 				\ 'whitelist': ['python'],
+	" 				\})
+	" augroup END
+
+	let g:lsp_settings = {
+				\   'pyls-all': {
+				\     'workspace_config': {
+				\         'pyls': {
+				\             'configurationSources': ['pycodestyle'],
+				\             'plugins': {
+				\                 'pydocstyle': {
+				\                     'enabled': v:false,
+				\                 },
+				\                 'pycodestyle': {
+				\                     'enabled': v:true,
+				\                     "ignore": ["E226", "E302", "E41", "E501"],
+				\                     "max_line_length": 120,
+				\                 },
+				\                 'black': {'enable': v:true},
+				\                 'autopep8': {'enable': v:true},
+				\             },
+				\         },
+				\     },
+				\   },
+				\ }
+endif
+
+" quickrun
+let g:quickrun_config['python'] = {
+			\   'command' : 'python',
+			\   'outputter/buffer/filetype' : 'python_result'
+			\}
+let g:quickrun_config['python.pytest.doctest'] = {
+			\   'command' : 'py.test',
+			\   'cmdopt' : '--doctest-modules',
+			\   'tempfile': '$HOME/.vim/temp/__tmp__.py',
+			\   'outputter/buffer/filetype' : 'doctest_result'
+			\}
+let g:quickrun_config['python.nose.doctest'] = {
+			\   'command' : 'nosetests',
+			\   'cmdopt' : '--with-doctest',
+			\   'tempfile': '$HOME/.vim/temp/__tmp__.py',
+			\   'outputter/buffer/filetype' : 'doctest_result'
+			\}
+let g:quickrun_config['python.pytest'] = {
+			\   'command' : 'py.test',
+			\   'cmdopt' : '-s -v',
+			\   'tempfile' : '$HOME/.vim/temp/__tmp__.py',
+			\   'outputter/buffer/filetype' : 'pytest_result'
+			\}
 
 " }}}
 
