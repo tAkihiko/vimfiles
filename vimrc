@@ -70,7 +70,7 @@ Plug '~\vimfiles\myplugin\vim-vsopen'
 Plug '~\vimfiles\myplugin\vim-region-edit'
 Plug '~\vimfiles\myplugin\vim-fugitive'
 
-let s:my_plugin_vimrc = $VIMHOME . '/secret/my_plugin.vimrc'
+let s:my_plugin_vimrc = $VIMHOME . '/secret/my_plugin.vim'
 if filereadable(s:my_plugin_vimrc)
 	exe 'source' s:my_plugin_vimrc
 endif
@@ -265,7 +265,7 @@ endf
 
 " {{{ My Script
 
-let s:my_script_vimrc = $VIMHOME . '/secret/my_script.vimrc'
+let s:my_script_vimrc = $VIMHOME . '/secret/my_script_setting.vim'
 if filereadable(s:my_script_vimrc)
 	exe 'source' s:my_script_vimrc
 endif
