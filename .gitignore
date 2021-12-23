@@ -7,6 +7,7 @@ secret/*
 sessions/*
 swpfiles/*
 undofiles/*
+viewfiles/*
 !.gitkeep
 
 # Created by https://www.toptal.com/developers/gitignore/api/vim

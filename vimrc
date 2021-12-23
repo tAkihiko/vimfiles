@@ -7,6 +7,7 @@ set viminfo+=c
 set backupdir^=$VIMHOME/backupfiles
 set undodir^=$VIMHOME/undofiles
 set directory^=$VIMHOME/swpfiles
+set viewdir=$VIMHOME/viewfiles
 
 set number
 set list listchars=tab:>-,trail:.
@@ -15,6 +16,7 @@ set shiftwidth=0 tabstop=4
 set nofixendofline
 set undofile
 set migemo
+set viewoptions-=options
 
 " Visual Studio
 set errorformat+=%m%\\t%f%\\t%l%\\t
