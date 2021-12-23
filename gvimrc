@@ -1,5 +1,10 @@
 scriptencoding utf-8
 
+" メニューの文字化け対策
+source $VIMRUNTIME/delmenu.vim
+set langmenu=ja_jp.utf-8
+source $VIMRUNTIME/menu.vim
+
 " カラースキームの設定
 let s:has_color = []
 if !empty(globpath(&rtp, 'colors/tokyonight.vim'))
