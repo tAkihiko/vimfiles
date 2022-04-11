@@ -98,6 +98,9 @@ nnoremap <silent> <C-W>} :call PreviewWord()<CR>
 
 nnoremap R gR
 
+" Windows用のマッピングを削除する
+vunmap <C-X>
+
 " {{{ My Command 
 
 func! PreviewWord()
