@@ -388,7 +388,7 @@ endfunction
 
 function! LightlineHightlight()
 	if exists('g:loaded_tanikawa') && g:loaded_tanikawa
-		return winwidth(0) > 100 ? tanikawa#show_highlight#ShowHlItem() : ''
+		return winwidth(0) > 100 ? tanikawa#show_highlight#ShowHl() : ''
 	else
 		return ''
 	endif
