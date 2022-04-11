@@ -18,6 +18,9 @@ set undofile
 set migemo
 set viewoptions-=options
 
+"set fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,euc-jp,guess,ucs-bom,ucs-2le,ucs-2
+set fileencodings=utf-8,sjis
+
 " Visual Studio
 set errorformat+=%m%\\t%f%\\t%l%\\t
 
