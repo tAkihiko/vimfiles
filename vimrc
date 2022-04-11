@@ -48,7 +48,8 @@ Plug 'mattn/ctrlp-matchfuzzy'
 Plug 'itchyny/vim-cursorword'
 "Plug 'mattn/vim-vsopen'
 Plug 'osyo-manga/vim-jplus'
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
+Plug 'preservim/tagbar'
 Plug 'timcharper/textile.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'previm/previm'
@@ -452,6 +453,7 @@ endfunction
 nnoremap <silent> <F9> :TagbarToggle<CR>
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
+let g:tagbar_systemenc = 'cp932'
 
 " }}}
 
