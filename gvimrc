@@ -25,10 +25,11 @@ endif
 "	" 先頭のカラースキームを選ぶ
 "	exe 'colorscheme' s:has_color[0]
 "endif
-colorscheme torte
+colorscheme tokyonight
 
 set background=dark
 set guifont=ゆたぽん（コーディング）Backsl:h12:cSHIFTJIS:qDRAFT
+"set guifont=更紗等幅ゴシック_J:h12:W300:cSHIFTJIS:qDRAFT
 set printfont=ゆたぽん（コーディング）Backsl:h10:cSHIFTJIS:qDRAFT
 set printheader=%<%t%h%m%=%N\ \ 
 
@@ -75,7 +76,7 @@ func! s:SetTransparency(onFocus, outFocus)
 endf
 
 " 初回
-call s:SetGuiParam(v:true, v:true)
+call s:SetGuiParam(v:false, v:true)
 
 " タブ表示
 " 引用：Vim のタブをそこそこ活用する | ⬢ Appirits spirits https://spirits.appirits.com/doruby/9017/?cn-reloaded=1
