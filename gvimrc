@@ -37,47 +37,49 @@ set printheader=%<%t%h%m%=%N\ \
 highlight clear CursorLine
 highlight CursorLine gui=underline
 
-command! ChangeViewMode    call <SID>ChangeViewMode()
-command! ChangeTransparent call <SID>ChangeTransparent()
+if has('+kaoriya')
+	command! ChangeViewMode    call <SID>ChangeViewMode()
+	command! ChangeTransparent call <SID>ChangeTransparent()
 
-let s:view_mode = v:true
-let s:is_transparent = v:true
+	let s:view_mode = v:true
+	let s:is_transparent = v:true
 
-func! s:ChangeViewMode()
-	call <SID>SetGuiParam(s:is_transparent, !s:view_mode)
-endf
+	func! s:ChangeViewMode()
+		call <SID>SetGuiParam(s:is_transparent, !s:view_mode)
+	endf
 
-func! s:ChangeTransparent()
-	call <SID>SetGuiParam(!s:is_transparent, s:view_mode)
-endf
+	func! s:ChangeTransparent()
+		call <SID>SetGuiParam(!s:is_transparent, s:view_mode)
+	endf
 
-func! s:SetGuiParam(is_transparent, view_mode)
-	if a:is_transparent
-		if a:view_mode
-			call s:SetTransparency(230, 200)
+	func! s:SetGuiParam(is_transparent, view_mode)
+		if a:is_transparent
+			if a:view_mode
+				call s:SetTransparency(230, 200)
+			else
+				call s:SetTransparency(190, 150)
+			endif
 		else
-			call s:SetTransparency(190, 150)
+			call s:SetTransparency(255, 255)
 		endif
-	else
-		call s:SetTransparency(255, 255)
-	endif
-	let s:is_transparent = a:is_transparent
-	let s:view_mode = a:view_mode
-endf
+		let s:is_transparent = a:is_transparent
+		let s:view_mode = a:view_mode
+	endf
 
-func! s:SetTransparency(onFocus, outFocus)
-	" http://c4se.hatenablog.com/entry/2013/05/04/093446
-	augroup MyGVimrc
-		au!
-		exec "autocmd GUIEnter    * set transparency=" . string(a:onFocus)
-		exec "autocmd FocusGained * set transparency=" . string(a:onFocus)
-		exec "autocmd FocusLost   * set transparency=" . string(a:outFocus)
-	augroup END
-	exec "set transparency=" . string(a:onFocus)
-endf
+	func! s:SetTransparency(onFocus, outFocus)
+		" http://c4se.hatenablog.com/entry/2013/05/04/093446
+		augroup MyGVimrc
+			au!
+			exec "autocmd GUIEnter    * set transparency=" . string(a:onFocus)
+			exec "autocmd FocusGained * set transparency=" . string(a:onFocus)
+			exec "autocmd FocusLost   * set transparency=" . string(a:outFocus)
+		augroup END
+		exec "set transparency=" . string(a:onFocus)
+	endf
 
-" 初回
-call s:SetGuiParam(v:false, v:true)
+	" 初回
+	call s:SetGuiParam(v:false, v:true)
+endif
 
 " タブ表示
 " 引用：Vim のタブをそこそこ活用する | ⬢ Appirits spirits https://spirits.appirits.com/doruby/9017/?cn-reloaded=1
