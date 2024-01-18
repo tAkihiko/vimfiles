@@ -72,6 +72,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'mnishz/colorscheme-preview.vim'
 Plug 'thinca/vim-quickrun'
+if !has('+kaoriya')
+	Plug 'vim-jp/vimdoc-ja'
+endif
 
 Plug '~\vimfiles\myplugin\_tanikawa'
 Plug '~\vimfiles\myplugin\vim-vsopen'
