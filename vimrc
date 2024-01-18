@@ -15,7 +15,9 @@ set cursorline
 set shiftwidth=0 tabstop=4
 set nofixendofline
 set undofile
-set migemo
+if has('+migemo')
+	set migemo
+endif
 set viewoptions-=options
 
 "set fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,euc-jp,guess,ucs-bom,ucs-2le,ucs-2
@@ -497,7 +499,9 @@ let g:asyncomplete_popup_delay = 200
 
 " {{{ Migemo
 
-let &migemodict = $VIMHOME . "/dict/".&enc."/migemo-dict"
+if has('+migemo')
+	let &migemodict = $VIMHOME . "/dict/".&enc."/migemo-dict"
+endif
 
 " }}}
 
