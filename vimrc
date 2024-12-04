@@ -119,7 +119,7 @@ vunmap <C-X>
 
 " {{{ My Command 
 
-func! PreviewWord()
+func! PreviewWord() " {{{
 	if &previewwindow			" プレビューウィンドウ内では実行しない
 		return
 	endif
@@ -154,9 +154,9 @@ func! PreviewWord()
 			wincmd p			" もとのウィンドウへ戻る
 		endif
 	endif
-endfun
+endfun " }}}
 
-func! MyXxdSyntaxHightlight() abort
+func! MyXxdSyntaxHightlight() abort " {{{
 
 	" {{{
 	"syn match myXxdHex1 contained /[ 0-9a-f]\{5}/
@@ -262,9 +262,9 @@ func! MyXxdSyntaxHightlight() abort
 	hi link myXxdString7 myXxd7
 	hi link myXxdString8 myXxd8
 
-endf
+endf " }}}
 
-func! MyXxdSyntaxHightlightClear() abort
+func! MyXxdSyntaxHightlightClear() abort " {{{
 	syn clear myXxdHex1
 	syn clear myXxdHex2
 	syn clear myXxdHex3
@@ -281,7 +281,8 @@ func! MyXxdSyntaxHightlightClear() abort
 	syn clear myXxdString6
 	syn clear myXxdString7
 	syn clear myXxdString8
-endf
+endf " }}}
+
 " }}}
 
 " {{{ My Script
