@@ -485,6 +485,8 @@ let g:partedit#opener = "tabnew"
 
 " {{{ LSP
 
+let g:lsp_auto_enable = 0
+
 " https://mattn.kaoriya.net/software/vim/20191231213507.htm
 function! s:on_lsp_buffer_enabled() abort
 	setlocal omnifunc=lsp#complete
