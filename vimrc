@@ -13,17 +13,22 @@ set number
 set list listchars=tab:>-,trail:.
 set cursorline
 set shiftwidth=0 tabstop=4
+set ambiwidth=double
 set nofixendofline
 set undofile
 if has('+migemo')
 	set migemo
 endif
 set viewoptions-=options
+set hlsearch incsearch
 
 "set fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,euc-jp,guess,ucs-bom,ucs-2le,ucs-2
 set fileencodings=utf-8,sjis
 
 set laststatus=2
+set scrolloff=3
+
+set ignorecase smartcase
 
 " Visual Studio
 set errorformat+=%m%\\t%f%\\t%l%\\t
