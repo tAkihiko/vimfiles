@@ -79,8 +79,13 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'mnishz/colorscheme-preview.vim'
 Plug 'thinca/vim-quickrun'
+Plug 'taku-o/vim-screenshot'
+Plug 'lambdalisue/vim-fullscreen'
+Plug 'ARM9/arm-syntax-vim'
+Plug 'itchyny/vim-qfedit'
 if !has('+kaoriya')
 	Plug 'vim-jp/vimdoc-ja'
+	Plug 'mtth/scratch.vim'
 endif
 
 Plug '~\vimfiles\myplugin\_tanikawa'
