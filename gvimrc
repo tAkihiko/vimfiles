@@ -38,6 +38,8 @@ highlight clear CursorLine
 highlight CursorLine gui=underline
 
 if has('+kaoriya')
+	" 透明度関係の独自コマンド
+	" {{{
 	command! ChangeViewMode    call <SID>ChangeViewMode()
 	command! ChangeTransparent call <SID>ChangeTransparent()
 
@@ -79,12 +81,14 @@ if has('+kaoriya')
 
 	" 初回
 	call s:SetGuiParam(v:false, v:true)
+
+	" }}}
 endif
 
 " タブ表示
 " 引用：Vim のタブをそこそこ活用する | ⬢ Appirits spirits https://spirits.appirits.com/doruby/9017/?cn-reloaded=1
 " 個別のタブの表示設定をします
-function! GuiTabLabel()
+function! GuiTabLabel() " {{{
 	" タブで表示する文字列の初期化をします
 	let l:label = ''
 
@@ -113,8 +117,10 @@ function! GuiTabLabel()
 
 	" 表示文字列を返します
 	return l:label
-endfunction
+endfunction " }}}
 
 " guitablabel に上の関数を設定します
 " その表示の前に %N というところでタブ番号を表示させています
 set guitablabel=%N:\ %{GuiTabLabel()}
+
+" vim: foldmethod=marker
