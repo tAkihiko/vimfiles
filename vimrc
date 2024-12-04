@@ -120,7 +120,9 @@ nnoremap <silent> <C-W>} :call PreviewWord()<CR>
 nnoremap R gR
 
 " Windows用のマッピングを削除する
-vunmap <C-X>
+" vunmap だとマッピングされてない状態でエラーとなり、
+" try も silent も防げないので再マップで削除している。
+vnoremap <C-X> <C-X>
 
 " {{{ My Command 
 
