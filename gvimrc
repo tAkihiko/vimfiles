@@ -37,6 +37,8 @@ set printheader=%<%t%h%m%=%N\ \
 highlight clear CursorLine
 highlight CursorLine gui=underline
 
+set lines=30 columns=100
+
 if has('+kaoriya')
 	" 透明度関係の独自コマンド
 	" {{{
