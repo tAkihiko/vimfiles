@@ -617,6 +617,18 @@ let g:quickrun_config['python.pytest'] = {
 
 " }}}
 
+" {{{ 秀丸
+
+command! Hidemaru call <SID>Hidemaru()
+function! s:Hidemaru()
+	"let l:hidemaru_cmd = '"C:\Program Files\Hidemaru\Hidemaru.exe"'
+	let l:hidemaru_cmd = '"C:\Program Files (x86)\Hidemaru\Hidemaru.exe"'
+	let l:hidemaru_arg = '/j' . line(".") . ' ' . shellescape(expand('%'))
+	exec 'silent!' '!start' l:hidemaru_cmd l:hidemaru_arg
+endfunction
+
+" }}}
+
 " DEBUG
 "let g:gitgutter_log = 1
 
