@@ -465,6 +465,10 @@ function! MigemoMatch(items, str, limit, mmode, ispath, crfile, regex)
 	endfor
 	return copy(output)
 endfunction
+let g:ctrlp_user_command_async = 1
+let g:ctrlp_lazy_update = 1
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
 "let g:ctrlp_match_func = {'match' : 'MigemoMatch' }
 "let g:ctrlp_match_func = {'match': 'ctrlp_matchfuzzy#matcher'}
 
