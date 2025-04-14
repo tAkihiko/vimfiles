@@ -23,7 +23,7 @@ set viewoptions-=options
 set hlsearch incsearch
 
 "set fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,euc-jp,guess,ucs-bom,ucs-2le,ucs-2
-set fileencodings=utf-8,sjis
+set fileencodings=utf-8,sjis,utf-16le
 
 set laststatus=2
 set scrolloff=3
