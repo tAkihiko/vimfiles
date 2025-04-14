@@ -480,6 +480,7 @@ nnoremap <silent> <F9> :TagbarToggle<CR>
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 let g:tagbar_systemenc = 'cp932'
+"let g:tagbar_ctags_bin = Universal Ctags のパス
 
 " }}}
 
