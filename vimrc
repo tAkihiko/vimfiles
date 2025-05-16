@@ -87,6 +87,9 @@ if !has('+kaoriya')
 	Plug 'vim-jp/vimdoc-ja'
 	Plug 'mtth/scratch.vim'
 endif
+if !has('+migemo')
+	Plug 'haya14busa/vim-migemo'
+endif
 
 Plug '~\vimfiles\myplugin\_tanikawa'
 Plug '~\vimfiles\myplugin\vim-vsopen'
@@ -451,7 +454,11 @@ function! MigemoMatch(items, str, limit, mmode, ispath, crfile, regex)
 	let ptns = split(a:str)
 	let migemos = []
 	for ptn in ptns
-		let migemos += [migemo(ptn)]
+		if has('migemo')
+			let migemos += [migemo(ptn)]
+		elseif !empty(globpath(&rtp, 'autoload/migemo.vim'))
+			let migemos += [migemo#MigemoSearch(ptn)]
+		endif
 	endfor
 	let migemo_ptn = join(migemos, '\|')
 	let output = []
@@ -471,6 +478,11 @@ let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
 "let g:ctrlp_match_func = {'match' : 'MigemoMatch' }
 "let g:ctrlp_match_func = {'match': 'ctrlp_matchfuzzy#matcher'}
+
+if !empty(globpath(&rtp, 'autoload/migemo.vim'))
+	let g:ctrlp_use_migemo = 1
+	"let g:ctrlp_match_func = {'match' : 'MigemoMatch' }
+endif
 
 " }}}
 
