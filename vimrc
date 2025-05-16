@@ -42,7 +42,7 @@ call plug#begin('$VIMHOME/plugged')
 
 " {{{ Plugin
 
-"Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
 Plug 'thinca/vim-localrc'
@@ -91,7 +91,7 @@ endif
 Plug '~\vimfiles\myplugin\_tanikawa'
 Plug '~\vimfiles\myplugin\vim-vsopen'
 Plug '~\vimfiles\myplugin\vim-region-edit'
-Plug '~\vimfiles\myplugin\vim-fugitive'
+"Plug '~\vimfiles\myplugin\vim-fugitive'
 
 let s:my_plugin_vimrc = $VIMHOME . '/secret/my_plugin.vim'
 if filereadable(s:my_plugin_vimrc)
