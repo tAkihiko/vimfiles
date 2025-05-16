@@ -293,6 +293,15 @@ func! MyXxdSyntaxHightlightClear() abort " {{{
 	syn clear myXxdString8
 endf " }}}
 
+if !has("+kaoriya")
+	if !exists(":Cd")
+		command! Cd silent cd %:h
+	endif
+	if !exists(":Lcd")
+		command! Lcd silent lcd %:h
+	endif
+endif
+
 " }}}
 
 " {{{ My Script
