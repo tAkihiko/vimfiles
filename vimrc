@@ -338,8 +338,9 @@ endif
 
 " {{{ fugitive
 
-nnoremap <leader>gs :<C-U>Gstatus<CR>
+nnoremap <leader>gs :<C-U>Git<CR>
 nnoremap <leader>gd :<C-U>Gdiff<CR>
+nnoremap <leader>gb :<C-U>Git blame<CR>
 
 " }}}
 
